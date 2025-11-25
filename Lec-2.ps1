@@ -28,3 +28,28 @@ Task: Restart all services whose names start with "WSearch".
 '''
 
 Get-Service -Name "WSearch" | ForEach-Object {$_.Refresh()};
+
+# -------------------------------
+
+# ASSIGNMENT:
+
+# Q1. Create a new variable. Store the result of Get-Process -Name "notepad" in a variable called $NotepadProc. Then, use that variable to display the Notepad process's Id and CPU usage.
+
+Write-Host "------------Q1----------------"
+
+$NotepadProcess = Get-Process -Name Notepad;
+
+$NotepadProcess | Where-Object {Write-Host "Process ID: $($_.Id), CPU USage: $($_.CPU)"}
+
+# Q2 Write a script. Create a new script called ProcessReport.ps1 that:
+'''
+Uses Get-Process to get all processes.
+
+Uses Where-Object to filter for processes using more than 200 MB of working set memory. (Hint: The property is WorkingSet and the value is in bytes. 200 MB = 200 * 1024 * 1024 bytes).
+
+Pipes those high-memory processes to ForEach-Object and writes a line for each one saying: "Process [Name] is using [Memory] MB of RAM."
+'''
+
+Write-Host "------------Q2----------------"
+
+Get-Process | Where-Object {$_.WorkingSet -gt 200MB} | ForEach-Object {Write-Host "Process $($_.Name) is using $(($_.WorkingSet)/(1024*1024)) MB of RAM"};
