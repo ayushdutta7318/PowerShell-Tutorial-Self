@@ -40,4 +40,33 @@ Get-Service | Get-Member;
 
 # Lets use a property:
 
+# (Get-Service -Name "wuauserv").Stop(); #use only in PS as admin.
+
+
+Get-Service -Name "wuauserv";
+
+
+Write-Host "---------------ASSIGNMENT--------------"
+
+# Q1 Find all services that are currently "Stopped".
+
+Write-Host "----------------------------------------------------"
+Write-Host "------------------------Q1----------------------------"
+
+Get-Service | Where-Object {$_.Status -eq "Stopped"};
+
+
+Write-Host "----------------------------------------------------"
+Write-Host "------------------------Q2----------------------------"
+# Q2 Get a list of running processes on your computer.
+
+Get-Process;
+Get-Process | Get-Member;
+
+
+# Q3Find the process for "Notepad" and stop it.
+
+Write-Host "----------------------------------------------------"
+Write-Host "------------------------Q3----------------------------"
+(Get-Process -Name Notepad).Kill();
 
