@@ -1,0 +1,1 @@
+write-host "This is a sample powershell script";
