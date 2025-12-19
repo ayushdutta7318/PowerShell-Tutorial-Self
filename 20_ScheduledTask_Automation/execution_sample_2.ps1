@@ -1,0 +1,1 @@
+Get-Service | Select-Object -Property Name, Status, ServiceName | Select-Object -First 10;
